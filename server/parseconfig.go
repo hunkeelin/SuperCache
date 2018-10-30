@@ -7,9 +7,9 @@ import (
 	"strconv"
 )
 
-func parseconfig(s string) (map[string]conf, error) {
+func (c *conn) parseconfig() (map[string]conf, error) {
 	toreturn := make(map[string]conf)
-	f, err := ioutil.ReadFile(s)
+	f, err := ioutil.ReadFile(c.confpath)
 	if err != nil {
 		return toreturn, err
 	}

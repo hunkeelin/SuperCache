@@ -18,6 +18,7 @@ type conn struct {
 	kb, tb, cb []byte // key,cert,ca in bytes
 	cacheMu    sync.Mutex
 	cacherdy   map[string]pcache
-	config     map[string]string // path:url
+	config     map[string]conf // path:url
+	confpath   string          // path:url
 	defpath    string
 }
