@@ -1,9 +1,7 @@
-##### Table of contents
-[Introduction](#Introduction)
-
-[Usage](#Usage)
-
-
+# Table of contents
+- [Introduction](#Introduction)
+- [Usage](#Usage)
+---
 
 ## Introduction
 This is a Cache server written in `go` it's awesome. 
