@@ -6,11 +6,17 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	m, err := parseconfig("config")
+	fmt.Println("testing parse")
+	c := conn{
+		confpath: "config",
+	}
+	m, err := c.parseconfig()
+	c.config = m
 	if err != nil {
 		panic(err)
 	}
-	for _, i := range m {
-		fmt.Println(i)
+	err = c.cacheup("/noob/shit")
+	if err != nil {
+		panic(err)
 	}
 }

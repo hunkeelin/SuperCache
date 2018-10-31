@@ -48,6 +48,42 @@ func (c *conn) parseconfig() (map[string]conf, error) {
 			}
 			t.time = time
 			toreturn[current] = t
+		case bytes.HasPrefix(tlines, []byte("-cert")):
+			f := bytes.Split(tlines, []byte("-cert:"))
+			if len(f) != 2 {
+				return toreturn, errors.New("config error at: " + string(tlines))
+			}
+			t = toreturn[current]
+			rcert, err := ioutil.ReadFile(string(f[1]))
+			if err != nil {
+				return toreturn, err
+			}
+			t.cert = rcert
+			toreturn[current] = t
+		case bytes.HasPrefix(tlines, []byte("-key")):
+			f := bytes.Split(tlines, []byte("-key:"))
+			if len(f) != 2 {
+				return toreturn, errors.New("config error at: " + string(tlines))
+			}
+			t = toreturn[current]
+			rkey, err := ioutil.ReadFile(string(f[1]))
+			if err != nil {
+				return toreturn, err
+			}
+			t.key = rkey
+			toreturn[current] = t
+		case bytes.HasPrefix(tlines, []byte("-ca")):
+			f := bytes.Split(tlines, []byte("-ca:"))
+			if len(f) != 2 {
+				return toreturn, errors.New("config error at: " + string(tlines))
+			}
+			t = toreturn[current]
+			rca, err := ioutil.ReadFile(string(f[1]))
+			if err != nil {
+				return toreturn, err
+			}
+			t.ca = rca
+			toreturn[current] = t
 		default:
 			continue
 		}

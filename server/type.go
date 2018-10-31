@@ -10,9 +10,10 @@ type pcache struct {
 	ready bool
 }
 type conf struct {
-	path string
-	url  string
-	time int
+	path          string
+	url           string
+	time          int
+	cert, key, ca []byte
 }
 type conn struct {
 	kb, tb, cb []byte // key,cert,ca in bytes
