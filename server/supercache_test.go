@@ -15,8 +15,7 @@ func TestParse(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	err = c.cacheup("/noob/shit")
-	if err != nil {
-		panic(err)
+	for _, f := range m {
+		fmt.Println(f)
 	}
 }

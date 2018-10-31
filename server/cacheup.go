@@ -3,6 +3,7 @@ package supercache
 import (
 	"errors"
 	"github.com/hunkeelin/mtls/klinreq"
+	"io/ioutil"
 	"strings"
 )
 
@@ -52,6 +53,6 @@ func (c *conn) cacheup(path string) {
 	cache.ready = true
 	cache.data = body
 	cache.err = nil
-	c.cacheready[path] = cache
+	c.cacherdy[path] = cache
 	c.cacheMu.Unlock()
 }
